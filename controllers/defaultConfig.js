@@ -1,10 +1,10 @@
 const config = {
     database: {
-      DATABASE: 'graduaDesign',
+      DATABASE: 'eleme',
       USERNAME: 'root',
-      PASSWORD: 'password',
+      PASSWORD: 'woaini',
       PORT: '3306',
-      HOST:'106.54.206.102'
+      HOST:'106.54.193.152'
     }
 };
 module.exports = config;

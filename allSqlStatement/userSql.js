@@ -1,148 +1,41 @@
 // 跟用户操作有关的sql语句
 const allServices = require('./index');
 
-// 获取登录用户信息
 let  userSql = {
-
-    // 登录
-    login:function (user) {
-        let _sql = `select userName,permissions,workNumber,position,professional,departmentId from user_info where workNumber = ${user.workNumber} and password = '${user.password}'`;
-        return allServices.query(_sql);
-      },
-
-    // 查询所有用户信息
-    queryAllUserInfo(page, size, queryFiled) {
-        let _sql = `select 
-        userName,
-        workNumber,
-        permissions,
-        position,
-        professional,
-        departmentId,
-        email,telNumber,
-        sex,address,
-        Id_Card,
-         entryTime 
-         from user_info 
-         where permissions != '0'
-         `
-         ;
-         let _sql3 = ` limit ${(page -1) * size} , ${size};`;
-         let _sql4 = ` order by entryTime desc`;
-         let _sql2 = '';
-         for (let key in queryFiled) {
-             if (queryFiled[key]) {
-                 if (key === 'userName') {
-                    _sql2 = ` and ${key} like '%${queryFiled[key]}%' ` 
-                 } else {
-                    _sql2 = ` and ${key} = '${queryFiled[key]}' `;
-                 }
-                 _sql += _sql2;
-             }
-         }
-         _sql += _sql4;
-         _sql += _sql3;
-         console.log(_sql);
-        return allServices.query(_sql);
-    },
-
-    // 查询用户信息
-    queryUserInfo:function(workNumber) {
-        let _sql = `select userName, workNumber,position,professional,departmentId,email,telNumber,sex,address,Id_Card from user_info where workNumber = ${workNumber};`
-        return allServices.query(_sql);
-    }, 
-
-    //修改用户信息
-    changeUserInfo:function (telNumber, email, address, workNumber) {
-        let _sql = `update user_info set telNumber='${telNumber}', email='${email}', address='${address}' where workNumber = '${workNumber}';`;
-         return allServices.query(_sql);
-    },
-    // 根据工号获取查询密码、修改密码
-    getPassByWorkNum:function(workNumber, newPassword = null){
-        let _sql;
-        if (newPassword) {
-        _sql = `update user_info set password = '${newPassword}' where workNumber = ${workNumber}`;
-        } else {
-        _sql = `select password from user_info where workNumber =${workNumber}`;
-        }
-        return allServices.query(_sql);
-    },
-    // 查询表中最大的workNumber
-    getMaxWorkNumber:function(){
-        let _sql = 'select max(workNumber) from user_info';
-        return allServices.query(_sql);
-    },
-    // 插入一名新的员工
-    insetNewEmployee:function(user){
-        let _sql = `insert into user_info (
-            userName,
-            password,
-            sex,
-            email,
-            telNumber,
-            address,
-            permissions,
-            workNumber,
-            position,
-            professional,
-            departmentId,
-            entryTime,
-            Id_Card
-        ) VALUES (
-            '${user.userName}',
-            '${user.password}',
-            '${user.sex}',
-            '${user.email}',
-            ${user.telNumber},
-            '${user.address}',
-            ${user.permissions},
-            ${user.workNumber},
-            '${user.positionName}',
-            '${user.professionalName}',
-            ${user.departmentId},
-            '${user.createTime}',
-            '${user.Id_Card}'
-        );`;
-         return allServices.query(_sql);
-    },
-    // 统计满足条件的员工人数
-    countAllStuff:function(queryFiled) {
-        let _sql = `select count(*) from user_info
-        where permissions != '0'`;
-        let _sql2 = '';
-        for (let key in queryFiled) {
-            if (queryFiled[key]) {
-                if (key === 'userName') {
-                   _sql2 = ` and ${key} like '%${queryFiled[key]}%' ` 
-                } else {
-                   _sql2 = ` and ${key} = '${queryFiled[key]}' `;
+        // 获取主页面Logo
+        getLogoImg:function(){
+                let _sql = 'select * from logo_img';
+                return allServices.query(_sql);
+        },
+        // 获取店铺列表
+        getShopList:function(filter){
+                let _sql = '';
+                if (filter === 'recently') {
+                    _sql = 'select * from store_list order by distance asc';
+                } else if(filter === 'quality') {
+                   _sql = "select * from store_list where tag2 = '品质联盟';";
+                } 
+                else {
+                   _sql = 'select * from store_list';
                 }
-                _sql += _sql2;
-            }
+                return allServices.query(_sql);
+        },
+        queryIsRegister:function(tel) {
+                let _sql = `select tel,username,userId from user_info where tel = ${tel};`;
+                return allServices.query(_sql);
+        },
+        addUser:function(user) {
+                let _sql = `insert into user_info (tel,username,userId) values (${user.tel},'${user.username}',${user.userId});`;
+                return allServices.query(_sql);
+        },
+        queryMaxUserId:function(){
+                let _sql = 'select Max(userId) from user_info';
+                return allServices.query(_sql);
+        },
+        // 通过userId 查询用户信息
+        queryUserInfo:function(userId){
+                let _sql = `select * from user_info where userId = ${userId};`;
+                return allServices.query(_sql);
         }
-        return allServices.query(_sql);
-    },
-    // 判断工号是否在数据库中
-    queryworkNumberISExit:function(workNumber){
-        let _sql = `select count(*) from user_info where workNumber = ${workNumber};`;
-        return allServices.query(_sql);
-    },
-    // 批量删除员工
-    deleteStuff:function (workNumbers){
-        let _sql = `delete from user_info where workNumber in ${workNumbers};`;
-        return allServices.query(_sql);
-    },
-    // 管理员修改员工信息
-    changeStuffInfo:function(user) {
-        let _sql = `update user_info set
-         departmentId=${user.departmentId}, 
-         professional='${user.professionalName}', 
-         position ='${user.positionName}' 
-         where workNumber = ${user.workNumber};
-         `;
-         console.log(_sql);
-         return allServices.query(_sql);
-    }
-     
-}   
+};
 module.exports = userSql;
