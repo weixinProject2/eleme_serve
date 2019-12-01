@@ -86,4 +86,45 @@ router.get('/getUserInfo', async(ctx,next) => {
       user,
     }
 });
+
+//保存用户地址
+router.post('/save_address',async ctx=>{
+    //1.先查询获取到的前端的地址是否在数据库已经存在相同数据
+    const findResult = await userSql.findAddress(ctx.request.body);
+    console.log('结果:',findResult);
+    if(findResult.length===1 &&findResult[0].info_sum>=1){
+        return ctx.body = {
+            code:1,
+            msg:'已存在相同地址信息'
+        }
+    }
+    //2.不存在，则保存
+    const addressInfo = await userSql.saveAddress(ctx.request.body);
+    console.log(addressInfo);
+    ctx.body = {
+        code:0,
+        data:addressInfo[0]
+    }
+});
+
+//获取当前用户存储的所有的地址
+router.post('/get_address',async ctx=>{
+    // console.log(ctx.request.body);
+   const allAddresses = await userSql.getAddress(ctx.request.body.userId);
+   console.log(allAddresses);
+   ctx.body={
+       code:0,
+       data:allAddresses
+   }
+});
+
+//更新要修改的地址
+router.post('/update_address',async ctx=>{
+    const updateResult = await  userSql.updateAddress(ctx.request.body)
+    console.log(updateResult);
+    ctx.body={
+        code:0,
+        data:updateResult[0]
+    }
+});
 module.exports = router;

@@ -13,13 +13,11 @@ let allServices = {
       pool.getConnection(function (err,connection) {
           if(err){
             reject(err)
-          }else
-          {
+          }else {
             connection.query(sql,values,(err,rows) => {
                 if(err){
                   reject(err)
-                }else
-              {
+                }else {
                 resolve(rows)
               }
               connection.release()
