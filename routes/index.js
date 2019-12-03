@@ -120,7 +120,7 @@ router.post('/get_address',async ctx=>{
 
 //更新要修改的地址
 router.post('/update_address',async ctx=>{
-    const updateResult = await  userSql.updateAddress(ctx.request.body)
+    const updateResult = await  userSql.updateAddress(ctx.request.body);
     console.log(updateResult);
     ctx.body={
         code:0,

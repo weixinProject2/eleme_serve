@@ -9,6 +9,7 @@ const cors = require('koa-cors');
 
 
 const index = require('./routes/index');
+const users = require('./routes/users');
 
 // error handler
 onerror(app);
@@ -82,6 +83,7 @@ app.use(session(CONFIG, app));
 
 // routes
 app.use(index.routes(), index.allowedMethods());
+app.use(users.routes(), users.allowedMethods());
 // error-handling
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
