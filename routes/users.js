@@ -16,21 +16,60 @@ router.get('/bar', function (ctx, next) {
 
 //保存
 router.post('/save_user', async ctx=>{
-    const findResult = await elmBacSql.findUser(ctx.request.body);
-    console.log('结果:',findResult);
+    const findResult = await elmBacSql.findUserByName(ctx.request.body);
     if(findResult.length===1 &&findResult[0].info_sum>=1){
-        return ctx.body = {
+        const loginResult = await elmBacSql.loginUser(ctx.request.body);
+        if(loginResult.length===1 && loginResult[0].info_sum>=1){
+            const userinfo =  await elmBacSql.getUserInfo(ctx.request.body);
+            console.log(userinfo);
+            // console.log(userinfo._id);
+            ctx.cookies.set('_id',userinfo[0]._id,{
+                domain: 'localhost',  // 写cookie所在的域名
+                maxAge: 60 * 60 * 1000, // cookie有效时长
+                httpOnly: false,  // 是否只用于http请求中获取
+                overwrite: false  // 是否允许重写
+            });
+            // console.log(ctx.cookies.get("_id"));
+            return ctx.body = {
+                code:0,
+                msg:'登录成功',
+            }
+        }
+        return ctx.body={
             code:1,
-            msg:'已存在相同用户名'
+            msg:'密码错误'
         }
     }
-    console.log(ctx);
+    // console.log(ctx);
     const saveResult = await elmBacSql.saveUserinfo(ctx.request.body);
-    console.log(saveResult);
+    ctx.cookies.set('_id',saveResult._id,{
+        domain: 'localhost',  // 写cookie所在的域名
+        path: ctx.url,       // 写cookie所在的路径
+        maxAge: 60 * 60 * 1000, // cookie有效时长
+        httpOnly: false,  // 是否只用于http请求中获取
+        overwrite: false  // 是否允许重写
+    });
+    // console.log('保存:',saveResult);
     ctx.body={
         code:0,
         data:saveResult[0]
     }
 });
+
+//验证cookies
+router.get('/cookies',async ctx=>{
+    const findResult = await elmBacSql.findUserByCookie(ctx.query);
+    if(findResult.length===1 ){
+       return  ctx.body={
+            code:0,
+            msg:'存在当前cookie'
+        }
+    }
+    return  ctx.body={
+        code:1,
+        msg:'不存在当前cookie'
+    }
+});
+
 
 module.exports = router;

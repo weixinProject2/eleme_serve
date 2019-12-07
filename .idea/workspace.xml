@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1daf4f7d-5577-4493-a41f-295dfc77f5ee" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/allSqlStatement/elmBackSql.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allSqlStatement/elmBackSql.js" beforeDir="false" afterPath="$PROJECT_DIR$/allSqlStatement/elmBackSql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +85,11 @@
       <workItem from="1575252152548" duration="750000" />
       <workItem from="1575252919720" duration="14000" />
       <workItem from="1575363397233" duration="18000" />
-      <workItem from="1575363709820" duration="3964000" />
+      <workItem from="1575363709820" duration="4038000" />
+      <workItem from="1575427780040" duration="5976000" />
+      <workItem from="1575510214793" duration="8310000" />
+      <workItem from="1575620252664" duration="2430000" />
+      <workItem from="1575703888348" duration="2642000" />
     </task>
     <servers />
   </component>
