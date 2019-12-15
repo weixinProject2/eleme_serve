@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1daf4f7d-5577-4493-a41f-295dfc77f5ee" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +32,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../vue/elm_back" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../project/swellfun" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -88,7 +89,12 @@
       <workItem from="1575510214793" duration="8310000" />
       <workItem from="1575620252664" duration="2430000" />
       <workItem from="1575703888348" duration="3728000" />
-      <workItem from="1575774882971" duration="740000" />
+      <workItem from="1575774882971" duration="6413000" />
+      <workItem from="1575855026949" duration="3910000" />
+      <workItem from="1575884279336" duration="48000" />
+      <workItem from="1576114230244" duration="3646000" />
+      <workItem from="1576199949547" duration="1199000" />
+      <workItem from="1576216379768" duration="2673000" />
     </task>
     <servers />
   </component>

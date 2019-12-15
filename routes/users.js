@@ -71,5 +71,15 @@ router.get('/cookies',async ctx=>{
     }
 });
 
+//获取首页数据。当日数据，新注册用户，新注册管理员
+
+//获取图片
+router.post('/photos',ctx=>{
+        console.log(ctx);
+        ctx.body={
+            code:0,
+            data:ctx.request.body
+        }
+});
 
 module.exports = router;
