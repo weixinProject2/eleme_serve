@@ -33,6 +33,7 @@ router.post('/save_user', async ctx=>{
             return ctx.body = {
                 code:0,
                 msg:'登录成功',
+                data:userinfo[0]
             }
         }
         return ctx.body={
