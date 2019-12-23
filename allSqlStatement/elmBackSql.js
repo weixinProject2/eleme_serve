@@ -46,10 +46,14 @@ const elmBacSql = {
                         '${md5Pass}' )  group by username;`;
         return  allServices.query(_sql_find);
     },
+    //获取userList
+    getUserList:function(limit){
+        let _find_user_list = `select username ,register_time, province from elm_back_userinfo limit ${limit.header},${limit.tail};`;
+        return allServices.query(_find_user_list);
+    },
 
 
-
-
+    //商铺相关操作
     //保存商铺信息
     saveShop:  function (info) {
         let _sql_save = `INSERT into elm_back_shop_list (shop_name,shop_address,shop_phone,shop_detail,
@@ -84,7 +88,6 @@ const elmBacSql = {
     },
     //保存商铺活动
     saveShopActives:function(info,shop_id) {
-        console.log('保存商铺活动info',info,'保存商铺活动shop_id',shop_id);
         for (let i = 0; i < info.tableData.length; i++) {
             let _sql_table_date = `INSERT into elm_back_shop_list_table_data (active_name,active_tag,active_text,active_shop_id)
                                     values('${info.tableData[i].activeName}',
@@ -119,7 +122,6 @@ const elmBacSql = {
     },
     //查找商铺里的活动列表by shop_id
     findShopActivesByShopId:function (shop_id) {
-        console.log('active里的shop_id',shop_id);
         let _find_actives_by_shop_id = `select * from elm_back_shop_list_table_data where active_shop_id = ${shop_id}`;
         return allServices.query(_find_actives_by_shop_id);
     },

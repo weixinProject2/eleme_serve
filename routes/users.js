@@ -72,6 +72,15 @@ router.get('/cookies',async ctx=>{
     }
 });
 
+//查询用户列表
+router.get('/get_userList',async ctx=>{
+    console.log(ctx.query);
+    return ctx.body={
+        code:0,
+        data:await elmBacSql.getUserList(ctx.query)
+    }
+});
+
 //保存商铺
 router.post('/save_shop',async ctx => {
     //先判断是否存在相同名称的商铺
@@ -83,21 +92,15 @@ router.post('/save_shop',async ctx => {
         }
     }
     //不存在则保存该店铺
-    console.log('1');
     await elmBacSql.saveShop(ctx.request.body);
     //获取刚添加的商铺的shop_id
-    console.log('2');
     const shopData = await elmBacSql.findShop(ctx.request.body);
-
-    console.log('shopData',shopData);
     //通过shop_id保存与该店铺相关的活动
     await elmBacSql.saveShopActives(ctx.request.body,shopData[0].shop_id);
     //通过shop_id查找当前shop 的信息
     let shopInfo = await elmBacSql.findShopByShopId(shopData[0].shop_id);
-    console.log('shopinfo',shopInfo);
     //通过shop_id查找当前shop的活动的信息
     let activesData =await elmBacSql.findShopActivesByShopId(shopData[0].shop_id);
-    console.log('activesData',activesData);
     ctx.body={
         code:0,
         data:{...shopInfo,activesData:activesData}
