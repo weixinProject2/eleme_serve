@@ -81,6 +81,15 @@ router.get('/get_userList',async ctx=>{
     }
 });
 
+//获取商铺列表
+router.get('/get_shopList',async ctx=>{
+    console.log(ctx.query);
+    return ctx.body={
+        code:0,
+        data:await elmBacSql.getShopList(ctx.query)
+    }
+});
+
 //保存商铺
 router.post('/save_shop',async ctx => {
     //先判断是否存在相同名称的商铺

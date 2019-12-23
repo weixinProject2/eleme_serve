@@ -130,6 +130,11 @@ const elmBacSql = {
         let _find_by_shop_name = `SELECT count(*) as info_sum FROM elm_back_shop_list WHERE shop_name = 
                                     '${info.shop_name}' group by shop_name;`
         return allServices.query(_find_by_shop_name);
+    },
+    //获取商铺列表
+    getShopList:function (limit) {
+        let _find_shop_list = `select * from elm_back_shop_list limit ${limit.header},${limit.tail};`;
+        return allServices.query(_find_shop_list);
     }
 };
 
