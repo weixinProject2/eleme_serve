@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="1daf4f7d-5577-4493-a41f-295dfc77f5ee" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/allSqlStatement/elmBackSql.js" beforeDir="false" afterPath="$PROJECT_DIR$/allSqlStatement/elmBackSql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
+>>>>>>> 4ceef20a0f7526b516bdfbf179ca86dbd65dc244
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +40,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -42,6 +48,9 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../vue/elm_back" />
+>>>>>>> 4ceef20a0f7526b516bdfbf179ca86dbd65dc244
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -103,9 +112,19 @@
       <workItem from="1575884279336" duration="48000" />
       <workItem from="1576114230244" duration="3646000" />
       <workItem from="1576199949547" duration="1199000" />
+<<<<<<< HEAD
       <workItem from="1576216379768" duration="2673000" />
       <workItem from="1576669660632" duration="71000" />
       <workItem from="1577185453982" duration="452000" />
+=======
+      <workItem from="1576216379768" duration="4741000" />
+      <workItem from="1576656067485" duration="606000" />
+      <workItem from="1576725450584" duration="1248000" />
+      <workItem from="1576822321994" duration="4260000" />
+      <workItem from="1577065811088" duration="16061000" />
+      <workItem from="1577150891267" duration="482000" />
+      <workItem from="1577151395304" duration="10651000" />
+>>>>>>> 4ceef20a0f7526b516bdfbf179ca86dbd65dc244
     </task>
     <servers />
   </component>
