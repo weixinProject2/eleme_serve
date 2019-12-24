@@ -3,6 +3,83 @@ const md5 =require('blueimp-md5');
 const allServices = require('./index');
 
 const elmBacSql = {
+    //首页获取相关数据信息
+    //获取有多少条用户信息
+    getUserNum:function(){
+        let _get_user_num = `select count(*)  as sum from elm_back_userinfo;`;
+        return allServices.query(_get_user_num);
+    },
+    //获取有多少条商铺信息
+    getShopNum:function(){
+        let _get_shop_num = `select count(*) as sum from elm_back_shop_list;`;
+        return allServices.query(_get_shop_num);
+    },
+    //获取当天注册用户的数量
+    //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
+    getTodayUserNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime();
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()+86400000;
+        let _get_today = `select count(*)  as sum from elm_back_userinfo where register_time >=${startTime} and register_time <= ${endTime};`;
+        return allServices.query(_get_today);
+    },
+    //获取一天前天注册用户的数量
+    //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
+    get1TodayUserNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()-86400000;
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime();
+        let _get_1today = `select count(*)  as sum from elm_back_userinfo where register_time >=${startTime} and register_time <= ${endTime};`;
+        return allServices.query(_get_1today);
+    },
+    //获取二天前注册用户的数量
+    //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
+    get2TodayUserNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime() - 86400000*2;
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()-86400000;
+        let _get_2today = `select count(*) as sum  from elm_back_userinfo where register_time >=${startTime} and register_time <= ${endTime};`;
+        return allServices.query(_get_2today);
+    },
+    //获取三天前注册用户的数量
+    //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
+    get3TodayUserNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()-86400000*3;
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()-86400000*2;
+        let _get_3today = `select count(*)  as sum from elm_back_userinfo where register_time >=${startTime} and register_time <= ${endTime};`;
+        return allServices.query(_get_3today);
+    },
+    //获取当天创建商铺的数量
+    getTodayShopNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime();
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()+86400000;
+        let _get_today = `select count(*) as sum  from elm_back_shop_list where shop_register_time >=${startTime} and shop_register_time <= ${endTime};`;
+        return allServices.query(_get_today);
+    },
+    //获取一天前天创建商铺的数量
+    //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
+    get1TodayShopNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()-86400000;
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime();
+        let _get_1today = `select count(*)  as sum from elm_back_shop_list where shop_register_time >=${startTime} and shop_register_time <= ${endTime};`;
+        return allServices.query(_get_1today);
+    },
+    //获取二天前创建商铺的数量
+    //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
+    get2TodayShopNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime() - 86400000*2;
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime() - 86400000;
+        let _get_2today = `select count(*)  as sum from elm_back_shop_list where shop_register_time >=${startTime} and shop_register_time <= ${endTime};`;
+        return allServices.query(_get_2today);
+    },
+    //获取三天前创建商铺的数量
+    //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
+    get3TodayShopNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime() - 86400000*3;
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()- 86400000*2;
+        let _get_3today = `select count(*) as sum  from elm_back_shop_list where shop_register_time >=${startTime} and shop_register_time <= ${endTime};`;
+        return allServices.query(_get_3today);
+    },
+
+
+
     //关于用户的操作
     //保存用户信息
     saveUserinfo :function (info) {
@@ -56,8 +133,9 @@ const elmBacSql = {
     //商铺相关操作
     //保存商铺信息
     saveShop:  function (info) {
+        const register_time = Date.now();
         let _sql_save = `INSERT into elm_back_shop_list (shop_name,shop_address,shop_phone,shop_detail,
-                        shop_tag,shop_type,shop_characteristics,shop_float_delivery_fee,shop_float_minimum_order_amount,shop_date1,shop_date2,shop_user_id) 
+                        shop_tag,shop_type,shop_characteristics,shop_float_delivery_fee,shop_float_minimum_order_amount,shop_date1,shop_date2,shop_user_id,shop_register_time) 
                                     VALUES('${info.shop_name}',
                                     '${info.shop_address}',
                                     '${info.shop_phone}',
@@ -69,22 +147,9 @@ const elmBacSql = {
                                     '${info.shop_float_minimum_order_amount}',
                                     '${info.shop_date1}',
                                     '${info.shop_date2}',
-                                    '${info.shop_user_id}');`;
+                                    '${info.shop_user_id}',
+                                    '${register_time}');`;
          allServices.query(_sql_save);
-        // const shop_info = this.findShop(info);
-        //
-        // console.log('shop_info',shop_info,'shop_id:',shop_info.shop_id);
-        //
-        // for(let i=0 ; i<info.tableData.length;i++){
-        //     let _sql_table_date = `INSERT into elm_back_shop_list_table_data (active_name,active_tag,active_text,active_shop_id)
-        //                             values('${info.tableData[i].activeName}',
-        //                                    '${info.tableData[i].activeTag}',
-        //                                    '${info.tableData[i].activeText}',
-        //                                    '${shop_info.shop_id}')`;
-        // }
-        // let shopInfo = this.findShopByShopId(shop_id);
-        // let activesData = this.findShopActivesByShopId(shop_id);
-        // return {...shopInfo,activesData:activesData}
     },
     //保存商铺活动
     saveShopActives:function(info,shop_id) {

@@ -14,6 +14,26 @@ router.get('/bar', function (ctx, next) {
     ctx.body = 'this is a users/bar response'
 });
 
+//首页获取相关数据信息
+router.get('/show_data',async ctx=>{
+    ctx.body={
+        code:0,
+        data:{
+            all_users:(await elmBacSql.getUserNum())[0]['sum'],
+            all_shops:(await elmBacSql.getShopNum())[0]['sum'],
+            user_1:(await elmBacSql.getTodayUserNum())[0]['sum'],
+            user_2:(await elmBacSql.get1TodayUserNum())[0]['sum'],
+            user_3:(await elmBacSql.get2TodayUserNum())[0]['sum'],
+            user_4:(await elmBacSql.get3TodayUserNum())[0]['sum'],
+            shop_1:(await elmBacSql.getTodayShopNum())[0]['sum'],
+            shop_2:(await elmBacSql.get1TodayShopNum())[0]['sum'],
+            shop_3:(await elmBacSql.get2TodayShopNum())[0]['sum'],
+            shop_4:(await elmBacSql.get3TodayShopNum())[0]['sum'],
+        },
+        msg:'管理员数据暂时与用户一样'
+    }
+});
+
 //保存用户以及登录
 router.post('/save_user', async ctx=>{
     const findResult = await elmBacSql.findUserByName(ctx.request.body);
