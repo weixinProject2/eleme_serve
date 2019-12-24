@@ -2,17 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1daf4f7d-5577-4493-a41f-295dfc77f5ee" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/address.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allSqlStatement/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/allSqlStatement/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allSqlStatement/userSql.js" beforeDir="false" afterPath="$PROJECT_DIR$/allSqlStatement/userSql.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/allSqlStatement/elmBackSql.js" beforeDir="false" afterPath="$PROJECT_DIR$/allSqlStatement/elmBackSql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
+>>>>>>> 4ceef20a0f7526b516bdfbf179ca86dbd65dc244
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -26,23 +33,38 @@
   </component>
   <component name="ProjectId" id="1UKt63QsswvGcmxWkRgaGeDNbze" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../vue/elm_back" />
+>>>>>>> 4ceef20a0f7526b516bdfbf179ca86dbd65dc244
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -76,7 +98,33 @@
       <workItem from="1573888883140" duration="4038000" />
       <workItem from="1573977182938" duration="592000" />
       <workItem from="1575116936847" duration="1360000" />
-      <workItem from="1575173837574" duration="13506000" />
+      <workItem from="1575173837574" duration="15029000" />
+      <workItem from="1575252152548" duration="750000" />
+      <workItem from="1575252919720" duration="14000" />
+      <workItem from="1575363397233" duration="18000" />
+      <workItem from="1575363709820" duration="4038000" />
+      <workItem from="1575427780040" duration="5976000" />
+      <workItem from="1575510214793" duration="8310000" />
+      <workItem from="1575620252664" duration="2430000" />
+      <workItem from="1575703888348" duration="3728000" />
+      <workItem from="1575774882971" duration="6413000" />
+      <workItem from="1575855026949" duration="3910000" />
+      <workItem from="1575884279336" duration="48000" />
+      <workItem from="1576114230244" duration="3646000" />
+      <workItem from="1576199949547" duration="1199000" />
+<<<<<<< HEAD
+      <workItem from="1576216379768" duration="2673000" />
+      <workItem from="1576669660632" duration="71000" />
+      <workItem from="1577185453982" duration="452000" />
+=======
+      <workItem from="1576216379768" duration="4741000" />
+      <workItem from="1576656067485" duration="606000" />
+      <workItem from="1576725450584" duration="1248000" />
+      <workItem from="1576822321994" duration="4260000" />
+      <workItem from="1577065811088" duration="16061000" />
+      <workItem from="1577150891267" duration="482000" />
+      <workItem from="1577151395304" duration="10651000" />
+>>>>>>> 4ceef20a0f7526b516bdfbf179ca86dbd65dc244
     </task>
     <servers />
   </component>
@@ -95,5 +143,27 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="634" y="269" key="FileChooserDialogImpl" timestamp="1576669728830">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="634" y="269" key="FileChooserDialogImpl/0.0.1707.1027@0.0.1707.1027" timestamp="1576669728830" />
+    <state width="1685" height="256" key="GridCell.Tab.0.bottom" timestamp="1576390513138">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1685" height="256" key="GridCell.Tab.0.bottom/0.0.1707.1027@0.0.1707.1027" timestamp="1576390513138" />
+    <state width="1685" height="256" key="GridCell.Tab.0.center" timestamp="1576390513138">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1685" height="256" key="GridCell.Tab.0.center/0.0.1707.1027@0.0.1707.1027" timestamp="1576390513138" />
+    <state width="1685" height="256" key="GridCell.Tab.0.left" timestamp="1576390513138">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1685" height="256" key="GridCell.Tab.0.left/0.0.1707.1027@0.0.1707.1027" timestamp="1576390513138" />
+    <state width="1685" height="256" key="GridCell.Tab.0.right" timestamp="1576390513138">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1685" height="256" key="GridCell.Tab.0.right/0.0.1707.1027@0.0.1707.1027" timestamp="1576390513138" />
   </component>
 </project>
