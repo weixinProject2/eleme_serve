@@ -14,6 +14,11 @@ const elmBacSql = {
         let _get_shop_num = `select count(*) as sum from elm_back_shop_list;`;
         return allServices.query(_get_shop_num);
     },
+    //获取又多少条商品信息
+    getFoodNum:function(){
+        let _get_food_num = `select count(*) as sum from elm_back_food_list;`;
+        return allServices.query(_get_food_num);
+    },
     //获取当天注册用户的数量
     //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
     getTodayUserNum:function(){
@@ -77,6 +82,37 @@ const elmBacSql = {
         let _get_3today = `select count(*) as sum  from elm_back_shop_list where shop_register_time >=${startTime} and shop_register_time <= ${endTime};`;
         return allServices.query(_get_3today);
     },
+    //获取当天创建商铺的数量
+    getTodayFoodNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime();
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()+86400000;
+        let _get_today = `select count(*) as sum  from elm_back_food_list where food_register_time >=${startTime} and food_register_time <= ${endTime};`;
+        return allServices.query(_get_today);
+    },
+    //获取一天前天创建商铺的数量
+    //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
+    get1TodayFoodNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()-86400000;
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime();
+        let _get_1today = `select count(*)  as sum from elm_back_food_list where food_register_time >=${startTime} and food_register_time <= ${endTime};`;
+        return allServices.query(_get_1today);
+    },
+    //获取二天前创建商铺的数量
+    //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
+    get2TodayFoodNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime() - 86400000*2;
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime() - 86400000;
+        let _get_2today = `select count(*)  as sum from elm_back_food_list where food_register_time >=${startTime} and food_register_time <= ${endTime};`;
+        return allServices.query(_get_2today);
+    },
+    //获取三天前创建商铺的数量
+    //new Date(new Date().setHours(0, 0, 0, 0))).getTime()
+    get3TodayFoodNum:function(){
+        let startTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime() - 86400000*3;
+        let endTime = (new Date(new Date().setHours(0, 0, 0, 0))).getTime()- 86400000*2;
+        let _get_3today = `select count(*) as sum  from elm_back_food_list where food_register_time >=${startTime} and food_register_time <= ${endTime};`;
+        return allServices.query(_get_3today);
+    },
 
 
 
@@ -127,6 +163,11 @@ const elmBacSql = {
     getUserList:function(limit){
         let _find_user_list = `select username ,register_time, province from elm_back_userinfo limit ${limit.header},${limit.tail};`;
         return allServices.query(_find_user_list);
+    },
+    //与getUserList相同，只不过多以个用户类型字段
+    getAdminList:function(limit){
+        let _find_admin_list = `select username ,register_time, province ,user_type from elm_back_userinfo limit ${limit.header},${limit.tail};`;
+        return allServices.query(_find_admin_list);
     },
 
 
@@ -200,7 +241,70 @@ const elmBacSql = {
     getShopList:function (limit) {
         let _find_shop_list = `select * from elm_back_shop_list limit ${limit.header},${limit.tail};`;
         return allServices.query(_find_shop_list);
+    },
+
+
+    //保存食物
+    saveFood:function (info) {
+        const register_time = Date.now();
+        let _sql_save = `INSERT into elm_back_food_list (food_name,food_active,food_detail,food_characteristics,
+                        food_specifications,food_packaging_fee,food_price,food_shop_id,food_register_time) 
+                                    VALUES('${info.food_name}',
+                                    '${info.food_active}',
+                                    '${info.food_detail}',
+                                    '${info.food_characteristics}',
+                                    '${info.food_specifications}',
+                                    '${info.food_packaging_fee}',
+                                    '${info.food_price}',
+                                    '${info.food_shop_id}',
+                                    '${register_time}');`;
+        return allServices.query(_sql_save);
+    },
+    //通过商铺id和食物名称查找是否在该商铺下已存在
+    findFoodByIdAndFoodName:function (info) {
+        let _find_by_shop_id_food_name = `SELECT count(*) as info_sum FROM elm_back_food_list WHERE food_name = '${info.food_name}' and food_shop_id = '${info.food_shop_id}';`;
+        return allServices.query(_find_by_shop_id_food_name);
+    },
+    //获取商品列表
+    getFoodList:function (limit) {
+        let _find_food_list = `select * from elm_back_food_list limit ${limit.header},${limit.tail};`;
+        return allServices.query(_find_food_list);
+    },
+    //更新商品的信息
+    updateFood:function (info) {
+        let _update_food = `update elm_back_food_list set food_active = '${info.food_active}',
+                                                          food_characteristics='${info.food_characteristics}',
+                                                          food_detail='${info.food_detail}',
+                                                          food_packaging_fee='${info.food_packaging_fee}',
+                                                          food_price ='${info.food_price}' where food_id = ${info.food_id} `;
+        return allServices.query(_update_food);
+    },
+    //更新商铺的信息
+    updateShop:function (info) {
+        let _update_shop = `update elm_back_shop_list set shop_address = '${info.shop_address}',
+                                                          shop_detail='${info.shop_detail}',
+                                                          shop_phone='${info.shop_phone}',
+                                                          shop_type='${info.shop_type}'
+                                                          where shop_id = ${info.shop_id} `;
+        return allServices.query(_update_shop);
+    },
+    //删除商铺
+    deleteShop:function (info) {
+        let _delete_shop = `DELETE FROM elm_back_shop_list WHERE shop_id = '${info.shop_id}'`;
+        return allServices.query(_delete_shop);
+    },
+    //删除商品
+    deleteFood:function (info) {
+        let _delete_food = `DELETE FROM elm_back_food_list WHERE food_id = '${info.food_id}'`;
+        return allServices.query(_delete_food);
+    },
+
+    //获取用户每个地区的人数
+    getPlaceNum:function () {
+        let _get_place_num = `SELECT province,count(*) as num FROM elm_back_userinfo GROUP BY province HAVING num >=1 ;`;
+        return allServices.query(_get_place_num)
     }
+
 };
 
 module.exports = elmBacSql;
