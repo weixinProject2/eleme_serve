@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1daf4f7d-5577-4493-a41f-295dfc77f5ee" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allSqlStatement/elmBackSql.js" beforeDir="false" afterPath="$PROJECT_DIR$/allSqlStatement/elmBackSql.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +99,7 @@
       <workItem from="1576822321994" duration="4260000" />
       <workItem from="1577065811088" duration="16061000" />
       <workItem from="1577150891267" duration="482000" />
-      <workItem from="1577151395304" duration="10651000" />
+      <workItem from="1577151395304" duration="11199000" />
     </task>
     <servers />
   </component>
